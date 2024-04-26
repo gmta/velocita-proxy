@@ -1,8 +1,8 @@
 # Velocita Proxy Docker image
 
-[Velocita](https://github.com/isaaceindhoven/velocita-proxy) acts as a caching reverse proxy to Composer repositories.
+[Velocita](https://github.com/gmta/velocita-proxy) acts as a caching reverse proxy to Composer repositories.
 
-Combined with [composer-velocita](https://github.com/isaaceindhoven/composer-velocita), it increases the performance
+Combined with [composer-velocita](https://github.com/gmta/composer-velocita), it increases the performance
 of a `composer install` when a local cache is not yet available and makes sure packages can be downloaded even if the
 source location is experiencing issues.
 
@@ -15,7 +15,7 @@ docker run -d --name velocita -p 80:8080 \
     -e MIRROR_PACKAGIST_URL=https://repo.packagist.org \
     -e MIRROR_PACKAGIST_TYPE=composer \
     -e MIRROR_GITHUB_CODELOAD_URL=https://codeload.github.com \
-    isaaceindhoven/velocita-proxy
+    gmta/velocita-proxy
 ```
 
 Go ahead and visit `http://localhost/mirror/packagist/packages.json` - this should now give you the Packagist index!
@@ -46,7 +46,7 @@ docker run -d --name velocita -p 80:8080 \
     -e MIRROR_WPACKAGIST_TYPE=composer \
     -e MIRROR_FIREGENTO_URL=https://packages.firegento.com \
     -e MIRROR_FIREGENTO_TYPE=composer \
-    isaaceindhoven/velocita-proxy
+    gmta/velocita-proxy
 ```
 
 For every mirror, the following configuration options are available:
@@ -76,7 +76,7 @@ docker run -d --name velocita -p 80:8080 \
     -e MIRROR_PACKAGIST_URL=https://repo.packagist.org \
     -e MIRROR_PACKAGIST_TYPE=composer \
     -v /path/on/host:/var/cache/velocita \
-    isaaceindhoven/velocita-proxy
+    gmta/velocita-proxy
 ```
 
 ## Enabling HTTPS
@@ -95,7 +95,7 @@ docker run -d --name velocita -p 80:8080 -p 443:8443 \
     -e MIRROR_PACKAGIST_TYPE=composer \
     -v /path/to/certificate.crt:/etc/nginx/server.crt \
     -v /path/to/keyfile.pem:/etc/nginx/server.key \
-    isaaceindhoven/velocita-proxy
+    gmta/velocita-proxy
 ```
 
 HTTP requests will be redirected to HTTPS.

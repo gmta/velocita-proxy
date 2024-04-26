@@ -12,7 +12,7 @@ fi
 
 pushd $(dirname $0)/../proxy/ >/dev/null
 
-imageName=isaaceindhoven/velocita-proxy
+imageName=gmta/velocita-proxy
 
 git tag "v${targetVersion}"
 git push --tags

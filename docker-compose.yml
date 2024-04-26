@@ -3,7 +3,7 @@ version: '3.2'
 services:
   proxy:
     env_file: .env
-    image: isaaceindhoven/velocita-proxy:latest
+    image: gmta/velocita-proxy:latest
     ports:
       - "0.0.0.0:${VELOCITA_HTTP_PORT}:8080"
     volumes:

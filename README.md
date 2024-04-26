@@ -1,8 +1,8 @@
 # Velocita
 
-[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/isaaceindhoven/velocita-proxy?sort=semver)](https://hub.docker.com/r/isaaceindhoven/velocita-proxy)
-[![Docker Pulls](https://img.shields.io/docker/pulls/isaaceindhoven/velocita-proxy)](https://hub.docker.com/r/isaaceindhoven/velocita-proxy)
-[![License](https://img.shields.io/github/license/isaaceindhoven/velocita-proxy)](https://github.com/isaaceindhoven/velocita-proxy/blob/master/LICENSE)
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/gmta/velocita-proxy?sort=semver)](https://hub.docker.com/r/gmta/velocita-proxy)
+[![Docker Pulls](https://img.shields.io/docker/pulls/gmta/velocita-proxy)](https://hub.docker.com/r/gmta/velocita-proxy)
+[![License](https://img.shields.io/github/license/gmta/velocita-proxy)](https://github.com/gmta/velocita-proxy/blob/master/LICENSE)
 
 Velocita is a caching reverse proxy for Composer repositories and package distribution locations, such as Packagist or GitHub.
 
@@ -16,7 +16,7 @@ Velocita is a caching reverse proxy for Composer repositories and package distri
 There are two parts to Velocita:
 
 * Velocita Proxy, a caching reverse proxy
-* [Composer-velocita](https://github.com/isaaceindhoven/composer-velocita), a plugin which instructs Composer to use a Velocita Proxy instance
+* [Composer-velocita](https://github.com/gmta/composer-velocita), a plugin which instructs Composer to use a Velocita Proxy instance
 
 ### Running Velocita Proxy
 
@@ -27,7 +27,7 @@ Velocita is available as a Docker image. There are two supported ways to run thi
 1. Clone this repository:
 
     ```
-    git clone https://github.com/isaaceindhoven/velocita-proxy
+    git clone https://github.com/gmta/velocita-proxy
     cd velocita-proxy
     ```
 
@@ -53,15 +53,15 @@ Alternatively, you can run the Docker image directly: see [the image's usage ins
 
 ### Using Composer-velocita
 
-[Composer-velocita](https://github.com/isaaceindhoven/composer-velocita) is a Composer plugin that redirects downloads
+[Composer-velocita](https://github.com/gmta/composer-velocita) is a Composer plugin that redirects downloads
 to your Velocita instance for all repositories it supports.
 
 Run the following commands on the machine where you want to enable Velocita, replacing
 `https://url.to.your.velocita.tld/` with the URL of your instance:
 
 ```
-composer global config allow-plugins.isaac/composer-velocita true
-composer global require isaac/composer-velocita
+composer global config allow-plugins.gmta/composer-velocita true
+composer global require gmta/composer-velocita
 composer velocita:enable https://url.to.your.velocita.tld/
 ```
 
@@ -107,7 +107,7 @@ Benchmark setup:
 
 ## Contributing
 
-Raise an issue or submit a pull request on [GitHub](https://github.com/isaaceindhoven/velocita-proxy).
+Raise an issue or submit a pull request on [GitHub](https://github.com/gmta/velocita-proxy).
 
 ## License
 
