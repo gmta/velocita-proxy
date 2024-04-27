@@ -52,14 +52,21 @@ ENV.keys.map { |key| key.to_s }
       composer velocita:enable <%= velocita_url %>
     </pre>
     <h2>Configured mirrors</h2>
-    <p>
-      Mirrors for the following locations are configured and active:
-    </p>
-    <ul>
-      <%- mirrors.each_with_index do |(name, mirror), index| -%>
-      <li><%= mirror[:url] %></li>
-      <%- end -%>
-    </ul>
+    <%- if mirrors.length > 0 -%>
+      <p>
+        Mirrors for the following locations are configured and active:
+      </p>
+      <ul>
+        <%- mirrors.each_with_index do |(name, mirror), index| -%>
+        <li><%= mirror[:url] %></li>
+        <%- end -%>
+      </ul>
+    <%- else -%>
+      <p>
+        No mirrors have been configured yet. Follow <a href="https://github.com/gmta/velocita-proxy/blob/master/proxy/README.md#configuring-mirrors">these instructions</a>
+        and restart Velocita Proxy to make use of the caching reverse proxy.
+      </p>
+    <%- end -%>
   </section>
 </body>
 </html>
