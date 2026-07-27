@@ -24,11 +24,12 @@ Go ahead and visit `http://localhost/mirror/packagist/packages.json` - this shou
 
 Velocita configures itself with the environment variables you pass.
 
-| Environment variable   | Required | Type                              | Description                            |
-| ---------------------- | -------- | --------------------------------- | -------------------------------------- |
-| `VELOCITA_URL`         | No       | URL (default: `http://localhost`) | The URL at which Velocita is reachable |
-| `VELOCITA_TLS_ENABLED` | No       | One of: `true`, `false` (default) | Enable HTTPS                           |
-| `VELOCITA_AUTH_TYPE`   | No       | One of: `none` (default), `basic` | Enable HTTP authentication             |
+| Environment variable    | Required | Type                                           | Description                            |
+| ----------------------- | -------- | ---------------------------------------------- | -------------------------------------- |
+| `VELOCITA_URL`          | No       | URL (default: `http://localhost`)              | The URL at which Velocita is reachable |
+| `VELOCITA_AUTH_TYPE`    | No       | One of: `none` (default), `basic`              | Enable HTTP authentication             |
+| `VELOCITA_IPV6_ENABLED` | No       | One of: `true` (default), `false`              | Enable IPv6 listeners                  |
+| `VELOCITA_TLS_ENABLED`  | No       | One of: `true`, `false` (default)              | Enable HTTPS                           |
 
 ## Configuring mirrors
 
@@ -57,7 +58,7 @@ For every mirror, the following configuration options are available:
 | `MIRROR_{name}_TYPE`                 | No       | One of: `simple` (default), `composer` | The mirror type                          |
 | `MIRROR_{name}_CACHE_EXPIRY`         | No       | Time (default: `3650d`)                | Time after which cached items expire     |
 | `MIRROR_{name}_CACHE_SIZE`           | No       | Size (default: `1g`)                   | Maximum size of this mirror's cache      |
-| `MIRROR_{name}_ALLOW_REVALIDATE`     | No       | Boolean (default: `false`)             | Allow revalidation of cached items       |
+| `MIRROR_{name}_ALLOW_REVALIDATE`     | No       | One of: `true`, `false` (default)      | Allow revalidation of cached items       |
 | `MIRROR_{name}_PACKAGES_JSON_EXPIRY` | No       | Time (default: `2m`)                   | Time after which `packages.json` expires |
 | `MIRROR_{name}_AUTH_TYPE`            | No       | One of: `basic` (default), `bearer`    | Type of upstream authentication          |
 | `MIRROR_{name}_AUTH_USERNAME`        | No       | String                                 | Username for authentication              |

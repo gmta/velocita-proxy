@@ -4,8 +4,9 @@ velocita_url = ENV['VELOCITA_URL'] || 'http://localhost'
 if velocita_url.end_with? '/'
     velocita_url = velocita_url.sub(/\/+$/, '')
 end
-tls_enabled = ENV['VELOCITA_TLS_ENABLED'] == 'true'
+tls_enabled = (ENV['VELOCITA_TLS_ENABLED'] || 'false') == 'true'
 auth_type = ENV['VELOCITA_AUTH_TYPE'] || 'none'
+ipv6_enabled = (ENV['VELOCITA_IPV6_ENABLED'] || 'true') == 'true'
 
 caches = {}
 mirrors = {}
@@ -31,7 +32,7 @@ ENV.keys.map { |key| key.to_s }
             :path => friendly_name,
             :url => url,
             :cache => friendly_name,
-            :revalidate => ['true', '1', 'on', 'yes'].include?(ENV["MIRROR_#{name}_ALLOW_REVALIDATE"]),
+            :revalidate => (ENV["MIRROR_#{name}_ALLOW_REVALIDATE"] || 'false') == 'true',
             :packages_json_expiry => ENV["MIRROR_#{name}_PACKAGES_JSON_EXPIRY"] || '2m',
             :auth_type => ENV["MIRROR_#{name}_AUTH_TYPE"] || 'basic',
             :auth_user => ENV["MIRROR_#{name}_AUTH_USERNAME"] || '',
@@ -112,7 +113,9 @@ gzip_types application/json;
 
 server {
     listen 8080 default_server;
+  <%- if ipv6_enabled -%>
     listen [::]:8080 default_server;
+  <%- end -%>
     server_name _;
 
     return 301 <%= velocita_url %>$request_uri;
@@ -122,7 +125,9 @@ server {
 server {
 <%- if tls_enabled -%>
     listen 8443 ssl default_server;
+  <%- if ipv6_enabled -%>
     listen [::]:8443 ssl default_server;
+  <%- end -%>
 
     http2 on;
 
@@ -130,7 +135,9 @@ server {
     ssl_certificate_key /etc/nginx/server.key;
 <%- else -%>
     listen 8080 default_server;
+  <%- if ipv6_enabled -%>
     listen [::]:8080 default_server;
+  <%- end -%>
 <%- end -%>
 
     server_name _;
