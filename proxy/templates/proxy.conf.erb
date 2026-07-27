@@ -90,7 +90,7 @@ proxy_redirect <%= mirror[:url] %> <%= velocita_url %>/mirror/<%= mirror[:path] 
 <%- if tls_enabled -%>
 
 # TLS configuration
-ssl_ciphers HIGH;
+ssl_ciphers HIGH:!aNULL:!MD5;
 ssl_protocols TLSv1.3 TLSv1.2;
 ssl_session_cache shared:SSL:10m;
 ssl_session_timeout 10m;
