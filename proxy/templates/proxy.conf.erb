@@ -80,7 +80,7 @@ proxy_ignore_headers Cache-Control Expires Set-Cookie;
 
 # Caching paths
 <%- caches.each do |name, cache| -%>
-proxy_cache_path /var/cache/velocita/<%= name %> levels=2:2 keys_zone=<%= name %>:5m inactive=<%= cache[:expiry] %> max_size=<%= cache[:size] %>;
+proxy_cache_path /var/cache/velocita/<%= name %> levels=2:2 use_temp_path=off keys_zone=<%= name %>:5m inactive=<%= cache[:expiry] %> max_size=<%= cache[:size] %>;
 <%- end -%>
 
 # Proxy redirects
