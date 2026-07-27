@@ -42,7 +42,7 @@ Velocita is available as a Docker image. There are two supported ways to run thi
 4. Start Velocita:
 
     ```
-    docker compose -f docker-compose.yml -f docker-compose.https.yml up -d
+    docker compose -f compose.yaml -f compose.https.yaml up -d
     ```
 
 5. Done!
