@@ -2,6 +2,7 @@ services:
   proxy:
     env_file: .env
     image: gmta/velocita-proxy:latest
+    restart: unless-stopped
     ports:
       - "${VELOCITA_HTTP_PORT}:8080"
     volumes:
