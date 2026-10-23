@@ -71,6 +71,9 @@ proxy_send_timeout 10s;
 proxy_socket_keepalive on;
 proxy_ssl_protocols TLSv1.3 TLSv1.2;
 proxy_ssl_server_name on;
+proxy_ssl_trusted_certificate /etc/ssl/certs/ca-certificates.crt;
+proxy_ssl_verify on;
+proxy_ssl_verify_depth 5;
 
 # Remove and ignore headers from proxy server responses
 proxy_hide_header Cache-Control;
