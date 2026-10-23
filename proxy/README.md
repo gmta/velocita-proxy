@@ -58,12 +58,16 @@ For every mirror, the following configuration options are available:
 | `MIRROR_{name}_TYPE`                 | No       | One of: `simple` (default), `composer` | The mirror type                          |
 | `MIRROR_{name}_CACHE_EXPIRY`         | No       | Time (default: `3650d`)                | Time after which cached items expire     |
 | `MIRROR_{name}_CACHE_SIZE`           | No       | Size (default: `1g`)                   | Maximum size of this mirror's cache      |
+| `MIRROR_{name}_ALLOW_INSECURE`       | No       | One of: `true`, `false` (default)      | Disable upstream TLS verification       |
 | `MIRROR_{name}_ALLOW_REVALIDATE`     | No       | One of: `true`, `false` (default)      | Allow revalidation of cached items       |
 | `MIRROR_{name}_PACKAGES_JSON_EXPIRY` | No       | Time (default: `2m`)                   | Time after which `packages.json` expires |
 | `MIRROR_{name}_AUTH_TYPE`            | No       | One of: `basic` (default), `bearer`    | Type of upstream authentication          |
 | `MIRROR_{name}_AUTH_USERNAME`        | No       | String                                 | Username for authentication              |
 | `MIRROR_{name}_AUTH_PASSWORD`        | No       | String                                 | Password or token for authentication     |
 | `MIRROR_{name}_USER_AGENT`           | No       | String                                 | User Agent header sent to upstream       |
+
+Only set `MIRROR_{name}_ALLOW_INSECURE` to `true` for an upstream whose certificate cannot be verified. Disabling
+certificate verification makes the connection vulnerable to interception.
 
 For time and size unit syntax, see: http://nginx.org/en/docs/syntax.html
 

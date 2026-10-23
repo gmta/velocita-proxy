@@ -32,6 +32,7 @@ ENV.keys.map { |key| key.to_s }
             :path => friendly_name,
             :url => url,
             :cache => friendly_name,
+            :allow_insecure => ENV["MIRROR_#{name}_ALLOW_INSECURE"] == 'true',
             :revalidate => (ENV["MIRROR_#{name}_ALLOW_REVALIDATE"] || 'false') == 'true',
             :packages_json_expiry => ENV["MIRROR_#{name}_PACKAGES_JSON_EXPIRY"] || '2m',
             :auth_type => ENV["MIRROR_#{name}_AUTH_TYPE"] || 'basic',
@@ -151,6 +152,9 @@ server {
         proxy_pass <%= mirror[:url] %>;
         proxy_cache <%= mirror[:cache] %>;
         proxy_cache_revalidate <%= mirror[:revalidate] ? 'on' : 'off' %>;
+    <%- if mirror[:allow_insecure] -%>
+        proxy_ssl_verify off;
+    <%- end -%>
 
         proxy_set_header Connection '';
         proxy_set_header Host $proxy_host;
